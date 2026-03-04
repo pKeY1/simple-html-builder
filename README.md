@@ -4,6 +4,19 @@ A lightweight, zero-dependency Python library for programmatically building HTML
 
 ## Installation
 
+### From GitHub (recommended)
+```bash
+pip install git+https://github.com/pKeY1/simple-html-builder.git
+```
+
+### Or clone and install locally
+```bash
+git clone https://github.com/pKeY1/simple-html-builder.git
+cd simple-html-builder
+pip install .
+```
+
+### PyPI (coming soon)
 ```bash
 pip install simple-html-builder
 ```
