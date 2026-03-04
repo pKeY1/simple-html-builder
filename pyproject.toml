@@ -29,5 +29,5 @@ Homepage = "https://github.com/pKeY1/simple-html-builder"
 Repository = "https://github.com/pKeY1/simple-html-builder"
 Issues = "https://github.com/pKeY1/simple-html-builder/issues"
 
-[tool.setuptools.packages.find]
-include = ["html_builder*"]
+[tool.setuptools]
+py-modules = ["html_builder"]
