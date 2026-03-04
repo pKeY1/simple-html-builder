@@ -117,6 +117,10 @@ def _build_attrs(
       attrs["onchange"] = on_change
    if hx_get:
       attrs["hx-get"] = hx_get
+      if hx_push_url:
+         attrs["hx-push-url"] = "true"
+         if href is None:
+            attrs["href"] = hx_get
    if hx_post:
       attrs["hx-post"] = hx_post
    if hx_put:
@@ -135,7 +139,6 @@ def _build_attrs(
       attrs["hx-include"] = hx_include
    if href:
       attrs["href"] = href
-   attrs["hx-push-url"] = str(hx_push_url).lower()
 
    for k, v in attr.items():
       attrs[k] = v
