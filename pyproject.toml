@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simple-html-builder"
+version = "0.1.0"
+description = "A lightweight, zero-dependency Python library for programmatically building HTML with optional HTMX support"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "pKeY1", email = "pkeey1@proton.me"}
+]
+keywords = ["html", "htmx", "builder", "web", "template"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+requires-python = ">=3.10"
+
+[project.urls]
+Homepage = "https://github.com/pKeY1/simple-html-builder"
+Repository = "https://github.com/pKeY1/simple-html-builder"
+Issues = "https://github.com/pKeY1/simple-html-builder/issues"
+
+[tool.setuptools.packages.find]
+include = ["html_builder*"]
