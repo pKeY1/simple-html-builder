@@ -89,6 +89,9 @@ def _build_attrs(
    on_change=None,
    hx_get=None,
    hx_post=None,
+   hx_put=None,
+   hx_delete=None,
+   hx_patch=None,
    hx_target=None,
    hx_trigger=None,
    hx_vals=None,
@@ -113,6 +116,12 @@ def _build_attrs(
       attrs["hx-get"] = hx_get
    if hx_post:
       attrs["hx-post"] = hx_post
+   if hx_put:
+      attrs["hx-put"] = hx_put
+   if hx_delete:
+      attrs["hx-delete"] = hx_delete
+   if hx_patch:
+      attrs["hx-patch"] = hx_patch
    if hx_target:
       attrs["hx-target"] = hx_target
    if hx_trigger:
@@ -150,6 +159,9 @@ def r(
    on_change=None,
    hx_get=None,
    hx_post=None,
+   hx_put=None,
+   hx_delete=None,
+   hx_patch=None,
    hx_target=None,
    hx_trigger=None,
    hx_vals=None,
@@ -169,6 +181,9 @@ def r(
       on_change=on_change,
       hx_get=hx_get,
       hx_post=hx_post,
+      hx_put=hx_put,
+      hx_delete=hx_delete,
+      hx_patch=hx_patch,
       hx_target=hx_target,
       hx_trigger=hx_trigger,
       hx_vals=hx_vals,
@@ -202,6 +217,9 @@ def e(
    on_change=None,
    hx_get=None,
    hx_post=None,
+   hx_put=None,
+   hx_delete=None,
+   hx_patch=None,
    hx_target=None,
    hx_trigger=None,
    hx_vals=None,
@@ -221,6 +239,9 @@ def e(
       on_change=on_change,
       hx_get=hx_get,
       hx_post=hx_post,
+      hx_put=hx_put,
+      hx_delete=hx_delete,
+      hx_patch=hx_patch,
       hx_target=hx_target,
       hx_trigger=hx_trigger,
       hx_vals=hx_vals,
