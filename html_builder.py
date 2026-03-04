@@ -81,6 +81,9 @@ class TAG(StrEnum):
    FIGCAPTION = "figcaption"
 
 
+VOID_TAGS = {"br", "hr", "img", "input", "meta", "link", "area", "base", "col", "embed", "param", "source", "track", "wbr"}
+
+
 def _build_attrs(
    id=None,
    class_=None,
@@ -289,7 +292,9 @@ def _render(node, out):
 
    attrs_str = _render_attrs(attrs)
 
-   if children or text:
+   if tag in VOID_TAGS:
+      out.append(f"<{tag}{attrs_str}>")
+   elif children or text:
       out.append(f"<{tag}{attrs_str}>")
       if text:
          out.append(_escape(text))

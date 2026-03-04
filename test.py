@@ -58,7 +58,7 @@ def test_form_with_children():
       e(TAG.INPUT, class_="input", id="email")
       e(TAG.BUTTON, text="Submit")
 
-   expected = '<form id="myform" onclick="submitForm()"><input id="email" class="input"></input><button>Submit</button></form>'
+   expected = '<form id="myform" onclick="submitForm()"><input id="email" class="input"><button>Submit</button></form>'
    result = to_string(b)
    assert result == expected, f"Expected: {expected}\nGot: {result}"
    print("test_form_with_children: PASSED")
@@ -79,7 +79,7 @@ def test_event_handlers():
    b = new_builder()
    e(TAG.INPUT, id="name", on_click="handleClick()", on_change="handleChange()")
 
-   expected = '<input id="name" onclick="handleClick()" onchange="handleChange()"></input>'
+   expected = '<input id="name" onclick="handleClick()" onchange="handleChange()">'
    result = to_string(b)
    assert result == expected, f"Expected: {expected}\nGot: {result}"
    print("test_event_handlers: PASSED")
