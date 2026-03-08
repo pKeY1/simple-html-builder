@@ -21,6 +21,11 @@ pip install .
 pip install simple-html-builder
 ```
 
+### For Benchmark (optional)
+```bash
+pip install htbuilder python-fasthtml jinja2
+```
+
 ## Quick Start
 
 ```python
@@ -112,23 +117,25 @@ print(to_string(b))
 
 ## Benchmark
 
-Performance comparison with other Python HTML builders (simple form with 2 inputs):
+**Fair comparison** - Jinja2 templates are pre-compiled once (like in real applications).
+
+Performance comparison (simple form with 2 inputs):
 
 | Framework | Mean Time |
 |-----------|-----------|
-| **simple-html-builder** | 0.040ms |
-| htbuilder | 0.040ms |
-| FastHTML | 0.179ms |
-| Jinja2 | 0.297ms |
+| **simple-html-builder** | ~0.034ms |
+| htbuilder | ~0.041ms |
+| FastHTML | ~0.170ms |
+| Jinja2 (fair) | ~0.006ms |
 
 Complex nested structure (50 elements):
 
 | Framework | Mean Time |
 |-----------|-----------|
-| **simple-html-builder** | 0.496ms |
-| htbuilder | 0.624ms |
-| Jinja2 | 1.389ms |
-| FastHTML | 2.890ms |
+| **simple-html-builder** | ~0.449ms |
+| htbuilder | ~0.617ms |
+| FastHTML | ~2.624ms |
+| Jinja2 (fair) | ~0.036ms |
 
 Run `python benchmark.py` to reproduce these results.
 
