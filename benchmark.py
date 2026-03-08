@@ -1,7 +1,36 @@
 import time
 import statistics
 import sys
+from jinja2 import Template
 
+JINJA2_FORM_TEMPLATE = Template("""
+<div id="app" class="container">
+    <form hx-post="/submit" hx-target="#result">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" class="form-control">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="form-control">
+        <button type="submit" class="btn-primary">Submit</button>
+    </form>
+    <div id="result"></div>
+</div>
+""")
+
+JINJA2_NESTED_TEMPLATE = Template("""
+<div class="container">
+{% for i in range(10) %}
+    <div class="item">
+        <h1>Item {{ i }}</h1>
+        <ul>
+        {% for j in range(5) %}
+            <li><a href="/item/{{ i }}/{{ j }}">Link {{ j }}</a></li>
+        {% endfor %}
+        </ul>
+        <button class="btn" hx-post="/action/{{ i }}">Click</button>
+    </div>
+{% endfor %}
+</div>
+""")
 
 def benchmark_simple(name, build_fn, iterations=1000):
    times = []
@@ -20,7 +49,6 @@ def benchmark_simple(name, build_fn, iterations=1000):
       "stdev": statistics.stdev(times) if len(times) > 1 else 0,
    }
 
-
 def your_impl_nested():
    from html_builder import new_builder, r, e, TAG, to_string
    b = new_builder()
@@ -34,7 +62,6 @@ def your_impl_nested():
                      e(TAG.A, href=f"/item/{i}/{j}", text=f"Link {j}")
             e(TAG.BUTTON, class_="btn", text="Click", hx_post=f"/action/{i}")
    return to_string(b)
-
 
 def htbuilder_nested():
    from htbuilder import div, h1, ul, li, a, button
@@ -52,7 +79,6 @@ def htbuilder_nested():
       )
    ))
 
-
 def fasthtml_nested():
    from fasthtml.common import Div, H1, Ul, Li, A, Button
    return str(Div(
@@ -67,24 +93,8 @@ def fasthtml_nested():
       cls="container",
    ))
 
-
 def jinja2_nested():
-   from jinja2 import Template
-   template = Template("""<div class="container">
-{% for i in range(10) %}
-<div class="item">
-  <h1>Item {{ i }}</h1>
-  <ul>
-  {% for j in range(5) %}
-    <li><a href="/item/{{ i }}/{{ j }}">Link {{ j }}</a></li>
-  {% endfor %}
-  </ul>
-  <button class="btn" hx-post="/action/{{ i }}">Click</button>
-</div>
-{% endfor %}
-</div>""")
-   return template.render()
-
+   return JINJA2_NESTED_TEMPLATE.render()
 
 def benchmark_complex(name, build_fn, iterations=500):
    times = []
@@ -101,7 +111,6 @@ def benchmark_complex(name, build_fn, iterations=500):
       "mean": statistics.mean(times),
       "median": statistics.median(times),
    }
-
 
 def run_benchmarks():
    print("=" * 75)
@@ -158,8 +167,6 @@ def run_benchmarks():
 
    print()
    print("=" * 75)
-
-
 
 if __name__ == "__main__":
    run_benchmarks()
