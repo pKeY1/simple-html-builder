@@ -99,12 +99,12 @@ from html_builder import new_builder, r, e, TAG, to_string
 
 b = new_builder()
 with r(TAG.DIV, class_="container"):
-    with r(TAG.FORM, hx_post="/api/submit", hx_target="#response", hx_push_url=True):
+    with r(TAG.FORM, hx_post="/api/submit", hx_target="#response"):
         e(TAG.INPUT, type="text", name="name", placeholder="Enter name")
         e(TAG.BUTTON, type="submit", text="Submit")
 
 print(to_string(b))
-# <div class="container"><form hx-post="/api/submit" hx-target="#response" hx-push-url="true"><input type="text" name="name" placeholder="Enter name"></input><button type="submit">Submit</button></form></div>
+# <div class="container"><form hx-post="/api/submit" hx-target="#response"><input type="text" name="name" placeholder="Enter name"><button type="submit">Submit</button></form></div>
 ```
 
 ## Features
